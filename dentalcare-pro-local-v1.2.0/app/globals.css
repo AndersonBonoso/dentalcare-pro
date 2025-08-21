@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dc-primary: #2563eb;
+  --dc-secondary: #00BFA6;
+  --dc-ink: #1e293b;
+  --dc-fg: #475569;
+  --dc-bg: #f8fafc;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+    color: var(--dc-ink);
+  }
+}
+
+@layer utilities {
+  .bg-dc-gradient {
+    background: linear-gradient(135deg, #2563eb 0%, #00BFA6 100%);
+  }
+  
+  .text-dc-ink {
+    color: var(--dc-ink);
+  }
+  
+  .text-dc-fg {
+    color: var(--dc-fg);
+  }
+  
+  .bg-dc-primary {
+    background-color: var(--dc-primary);
+  }
+  
+  .shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+}
+
+@layer components {
+  .dc-card {
+    @apply bg-white rounded-xl shadow-soft border border-slate-200/60;
+  }
+  
+  .dc-btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dc-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .dc-btn-primary {
+    @apply dc-btn text-white shadow hover:opacity-90;
+    background: linear-gradient(135deg, #2563eb 0%, #00BFA6 100%);
+  }
+  
+  .dc-btn-secondary {
+    @apply dc-btn bg-slate-100 text-slate-900 hover:bg-slate-200;
+  }
+  
+  .dc-input {
+    @apply flex h-10 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dc-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .dc-link {
+    @apply text-dc-primary hover:text-dc-secondary transition-colors underline-offset-4 hover:underline;
+  }
+}
+
+/* Sidebar Styles */
+.sidebar {
+  @apply fixed z-30 w-80 bg-white border-r border-slate-200 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+}
+
+.sidebar.open {
+  @apply translate-x-0;
+}
+
+@media (min-width: 768px) {
+  .sidebar.open {
+    @apply translate-x-0;
+  }
+}
+
+/* Backdrop */
+.backdrop {
+  @apply fixed inset-0 bg-black/20 z-20 opacity-0 pointer-events-none transition-opacity duration-300;
+}
+
+.backdrop.show {
+  @apply opacity-100 pointer-events-auto;
+}
+
+@media (min-width: 768px) {
+  .backdrop {
+    @apply hidden;
+  }
+}
+
+/* App Shell */
+.app-shell {
+  @apply transition-all duration-300 ease-in-out;
+}
+
