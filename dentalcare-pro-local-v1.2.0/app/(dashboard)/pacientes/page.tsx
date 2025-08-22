@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { supabaseBrowser } from '@/lib/supabaseBrowser';
+import NewPacienteModal from '../pacientes/NewPacienteModal';
 import { fmtDate } from '@/lib/ui';
 import { 
   Search, 
